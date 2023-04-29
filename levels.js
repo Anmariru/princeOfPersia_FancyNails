@@ -1,8 +1,5 @@
 function getStairsMovementDirection(stairNumber, isClimbingStairs)
 {
-    // stairNumber; // is eine Nummer
-    // isClimbingStairs; // is ein boolean
-
     if(stairNumber % 2 === 0 && isClimbingStairs === false)
     {
       return "down";
@@ -23,20 +20,6 @@ function getStairsMovementDirection(stairNumber, isClimbingStairs)
 
 function getZigZagMovementDirection(step)
 {
-  /*
-    Implement the function required to move in a zig-zag pattern.
-
-    Create a getZigZagMovementDirection() function to return "left", "right", "up", or "down" based on the values of the "step" 
-    parameter to allow the prince to reach the keyboard symbol on the map. The function receives a step parameter with the number 
-    of the necessary steps as its value.
-
-    You can avoid writing a lot of if else statements by checking if the step can be divided by a certain number for "up" and 
-    another number for "down".
-
-    When the node start.js level6 command is executed and the http://127.0.0.1:9000/?level=6 link is opened in a browser, 
-    the prince automatically moves in a zig-zag pattern up and down and reaches the first symbol on the map.
-  */
-
   if (step % 6 === 0)
   {
     return "up";
@@ -53,25 +36,6 @@ function getZigZagMovementDirection(step)
 
 function manuallyControl(inputKeyName)
 {
-  // Something with key pressing
-
-  /*
-    Implement the function to move the prince using the keyboard.
-
-    Create a manuallyControl() function which receives the name of the pressed key as a string (for example, 
-      "KeyA" is the A key and "ArrowUp" is the Up key).
-
-    When moving the prince using the keyboard you can call the moveDirection() function using 
-    "left", "right", "up", and "down" strings as arguments.
-
-    The prince can be moved using the left arrow, right arrow, up arrow, and down arrow keys.
-
-    The prince can be moved using the w, a, s, d keys.
-
-    The prince can only be moved using either the arrow keys or the w,a,s,d keys. You can switch between 
-    the input methods by pressing the q key.
-
-  */
   if(inputKeyName === "ArrowUp" || inputKeyName === "KeyW") 
   {
     moveDirection("up");
@@ -106,17 +70,27 @@ function givePotion2Answer(list) // Sum all even numbers from array
 
 function givePotion3Answer(list) // find Max in Array
 {
-  return Math.max(list); // Methods are not allowed! need to rewrite that
+  let max = list[0];
+  for(let i = 0; i < list.length; ++i)
+  {
+    if(max < list[i])
+    {
+      max = list[i];
+    }
+  }
+  return max;
 }
 
-function givePotion4Answer()
+function givePotion4Answer() // Capitalize spezific letters from string, return string
 {
 
+  return capitalizedString;
 }
 
 function givePotion5Answer(hours, minutes, seconds, secondsToAdd) // adding some seconds to a given time (17:59:54) return same type string
 {
   let timeReturn = 0;
+  let stringyfyTime = "";
   seconds += secondsToAdd;
   timeReturn = Math.floor(seconds / 60);
   seconds %= 60;
@@ -131,44 +105,73 @@ function givePotion5Answer(hours, minutes, seconds, secondsToAdd) // adding some
 function givePotion6Answer(input) // Sum all numbers from input string (*3*5*8*1*4*2)
 {
 
-  let array = [];
+  let arrayConversion = input.split('*');
   let sum = 0;
-  array.push(input.split('*'))
-  for(let i = 0; i < array.length; ++i)
-  {
-    sum += array[i];
+  for(let i = 1; i < arrayConversion.length; ++i)
+  {    
+    sum += Number(arrayConversion[i]);    
   }
   return sum;
 }
 
-function givePotion7Answer(input)
+function givePotion7Answer(input) // make sum of all numbers in string -> need to extract numbers -> sum -> return sum
 {
 
+  return sum;
 }
 
-function givePotion8Answer(number)
+function givePotion8Answer(number) // return a boolean for "number is prime?"
 {
 
+  return isPrime;
 }
 
-function givePotion9Answer(list)
+function givePotion9Answer(list) // make sum of 2 smallest numbers of array, return sum
 {
 
+  return sum;
 }
 
 function givePotion10Answer(letterToFind, input) // return the position of aLetter within a String
 {
-  return input.indexOf(letterToFind); // indexOf nicht erlaubt
+  let arrayOfLetters = input.split("");
+  let index = -1;
+  for(let i = 0; i < arrayOfLetters.length; ++i)
+  {
+    if(letterToFind === arrayOfLetters[i])
+    {
+      index = i;
+      return index;
+    }
+  }
+  return index;
 }
 
-function givePotion11Answer(input, letterToReplace, letterToPutInstead)
+function givePotion11Answer(input, letterToReplace, letterToPutInstead) // replace specific letters in a string
 {
-
+  let arrayOfLetters = input.split("");
+  for(let i = 0; i < arrayOfLetters.length; ++i)
+  {
+    if(arrayOfLetters[i] === letterToReplace)
+    {
+      arrayOfLetters[i] = letterToPutInstead;
+    }
+  }
+  return arrayOfLetters.join("");
 }
 
-function givePotion12Answer(numbers)
+function givePotion12Answer(numbers) // return sum of all numbers in the array, make them pos if they are negative
 {
-
+let sum = 0;
+  for(let i = 0; i < numbers.length; ++i)
+  {
+    if(numbers[i] < 0)
+    {
+      numbers[i] *= -1;
+    }
+    sum += numbers[i];
+  }
+  return sum;
 }
 
 function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince)
