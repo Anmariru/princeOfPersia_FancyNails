@@ -81,10 +81,20 @@ function givePotion3Answer(list) // find Max in Array
   return max;
 }
 
-function givePotion4Answer() // Capitalize spezific letters from string, return string
+function givePotion4Answer(input, toCapitalize) // Capitalize spezific letters from string, return string
 {
-
-  return capitalizedString;
+  let capitalizedString = input.split("");
+  for(let i = 0; i < capitalizedString.length; ++i)
+  {
+    for(let j = 0; j < toCapitalize.length; ++j)
+    {
+      if(capitalizedString[i] === toCapitalize[j])
+      {
+        capitalizedString[i] = capitalizedString[i].toUpperCase();
+      }
+    }
+  }
+  return capitalizedString.join("");
 }
 
 function givePotion5Answer(hours, minutes, seconds, secondsToAdd) // adding some seconds to a given time (17:59:54) return same type string
@@ -116,19 +126,43 @@ function givePotion6Answer(input) // Sum all numbers from input string (*3*5*8*1
 
 function givePotion7Answer(input) // make sum of all numbers in string -> need to extract numbers -> sum -> return sum
 {
-
+  let sum = 0;
+  let numArray = input.match(/\d/g) // using .match(/\d+/g) for 2+ diget numbers only!
+  console.log(numArray);
+  for(let i = 0; i < numArray.length; ++i)
+  {
+    sum += Number(numArray[i]);    
+  }
   return sum;
 }
 
 function givePotion8Answer(number) // return a boolean for "number is prime?"
 {
-
+  let isPrime = number === 1 ? false : true;
+  for(let i = 2; i < number; ++i)
+  {
+    number % i === 0 ? isPrime *= false : isPrime *= true;
+  }
+  if(isPrime === 1)
+  {
+    isPrime = true;
+  }
+  else if(isPrime === 0)
+  {
+    isPrime = false;
+  }
   return isPrime;
 }
 
 function givePotion9Answer(list) // make sum of 2 smallest numbers of array, return sum
 {
-
+  let numArray = list;
+  let sum = 0;
+  numArray.sort((a,b) => a-b)
+  for(let i = 0; i < 2; ++i)
+  {
+    sum += numArray[i];
+  }
   return sum;
 }
 
