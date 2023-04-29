@@ -1,27 +1,24 @@
 function getStairsMovementDirection(stairNumber, isClimbingStairs)
 {
-  // return left, right, up, down based on stair number % something === 0 i guess
+    // stairNumber; // is eine Nummer
+    // isClimbingStairs; // is ein boolean
 
-  /*
-    Implement the function required to go up and down the stairs.
-
-    Create a getStairsMovementDirection() function to return "left", "right", "up", and "down" as strings based on 
-    the received values of the stairNumber and isClimbingStairs parameters to make the prince go up and down the stairs.
-
-    You can avoid writing a lot of if else statements by checking if the stair number can be divided by a certain number.
-
-    When the node start.js level6 command is executed and the http://127.0.0.1:9000/?level=6 link is opened in a browser, 
-    the prince automatically goes up and down the stairs.
-
-  */
-
-    let a = stairNumber; // is eine Nummer
-    let b = isClimbingStairs; // is ein boolean
-
-    console.log(a , b);
-    let aString = "left";
-
-    return aString;
+    if(stairNumber % 2 === 0 && isClimbingStairs === false)
+    {
+      return "down";
+    }
+    else if(stairNumber % 2 !== 0 && isClimbingStairs === false)
+    {
+      return "right";
+    }
+    else if(stairNumber % 2 === 0 && isClimbingStairs)
+    {
+      return "up";
+    }
+    else
+    {
+      return "right";
+    }
 } // needs level6 to check
 
 function getZigZagMovementDirection(step)
@@ -38,8 +35,19 @@ function getZigZagMovementDirection(step)
 
     When the node start.js level6 command is executed and the http://127.0.0.1:9000/?level=6 link is opened in a browser, 
     the prince automatically moves in a zig-zag pattern up and down and reaches the first symbol on the map.
-
   */
+  if (step === 0 || step === 6)
+  {
+    return "up";
+  }
+  else if(step % 3 === 0)
+  {
+    return "down";
+  }
+  else
+  {
+    return "right";
+  }
 }
 
 function manuallyControl(inputKeyName)
@@ -63,6 +71,22 @@ function manuallyControl(inputKeyName)
     the input methods by pressing the q key.
 
   */
+  if(inputKeyName === "ArrowUp" || inputKeyName === "KeyW") 
+  {
+    moveDirection("up");
+  }
+  else if (inputKeyName === "ArrowDown" || inputKeyName === "KeyS")
+  {
+    moveDirection("down");
+  }
+  else if (inputKeyName === "ArrowLeft" || inputKeyName === "KeyA")
+  {
+    moveDirection("left");
+  }
+  else if (inputKeyName === "ArrowRight" || inputKeyName === "KeyD")
+  {
+    moveDirection("right");
+  }
 }
 
 function givePotion2Answer()
