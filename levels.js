@@ -106,7 +106,7 @@ function givePotion2Answer(list) // Sum all even numbers from array
 
 function givePotion3Answer(list) // find Max in Array
 {
-  return Math.max(list);
+  return Math.max(list); // Methods are not allowed! need to rewrite that
 }
 
 function givePotion4Answer()
@@ -114,10 +114,18 @@ function givePotion4Answer()
 
 }
 
-function givePotion5Answer() // adding some seconds to a given time string (17:59:54) return same type string
+function givePotion5Answer(hours, minutes, seconds, secondsToAdd) // adding some seconds to a given time (17:59:54) return same type string
 {
-
-
+  let timeReturn = 0;
+  seconds += secondsToAdd;
+  timeReturn = Math.floor(seconds / 60);
+  seconds %= 60;
+  minutes += timeReturn;
+  timeReturn = Math.floor(minutes / 60);
+  minutes %= 60;
+  hours += timeReturn;
+  stringyfyTime = hours.toString() + ":" + minutes.toString() + ":" + seconds.toString();
+  return stringyfyTime;
 }
 
 function givePotion6Answer(input) // Sum all numbers from input string (*3*5*8*1*4*2)
@@ -150,7 +158,7 @@ function givePotion9Answer(list)
 
 function givePotion10Answer(letterToFind, input) // return the position of aLetter within a String
 {
-  return input.indexOf(letterToFind);
+  return input.indexOf(letterToFind); // indexOf nicht erlaubt
 }
 
 function givePotion11Answer(input, letterToReplace, letterToPutInstead)
