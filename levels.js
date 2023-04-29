@@ -36,7 +36,8 @@ function getZigZagMovementDirection(step)
     When the node start.js level6 command is executed and the http://127.0.0.1:9000/?level=6 link is opened in a browser, 
     the prince automatically moves in a zig-zag pattern up and down and reaches the first symbol on the map.
   */
-  if (step === 0 || step === 6)
+
+  if (step % 6 === 0)
   {
     return "up";
   }
@@ -89,14 +90,23 @@ function manuallyControl(inputKeyName)
   }
 }
 
-function givePotion2Answer()
+function givePotion2Answer(list) // Sum all even numbers from array
 {
+  let sum = 0;
 
+  for(let i = 0; i < list.length; ++i)
+  {
+    if(list[i] % 2 === 0)
+    {
+      sum += list[i];
+    }
+  }  
+    return sum;
 }
 
-function givePotion3Answer()
+function givePotion3Answer(list) // find Max in Array
 {
-
+  return Math.max(list);
 }
 
 function givePotion4Answer()
@@ -104,42 +114,51 @@ function givePotion4Answer()
 
 }
 
-function givePotion5Answer()
+function givePotion5Answer() // adding some seconds to a given time string (17:59:54) return same type string
+{
+
+
+}
+
+function givePotion6Answer(input) // Sum all numbers from input string (*3*5*8*1*4*2)
+{
+
+  let array = [];
+  let sum = 0;
+  array.push(input.split('*'))
+  for(let i = 0; i < array.length; ++i)
+  {
+    sum += array[i];
+  }
+  return sum;
+}
+
+function givePotion7Answer(input)
 {
 
 }
 
-function givePotion6Answer()
+function givePotion8Answer(number)
 {
 
 }
 
-function givePotion7Answer()
+function givePotion9Answer(list)
 {
 
 }
 
-function givePotion8Answer()
+function givePotion10Answer(letterToFind, input) // return the position of aLetter within a String
+{
+  return input.indexOf(letterToFind);
+}
+
+function givePotion11Answer(input, letterToReplace, letterToPutInstead)
 {
 
 }
 
-function givePotion9Answer()
-{
-
-}
-
-function givePotion10Answer()
-{
-
-}
-
-function givePotion11Answer()
-{
-
-}
-
-function givePotion12Answer()
+function givePotion12Answer(numbers)
 {
 
 }
