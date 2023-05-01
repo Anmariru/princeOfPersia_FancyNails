@@ -244,21 +244,59 @@ function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince
   }
 }
 
-function level8Move()
+function level8Move(gameMap)
 {
+  let result = [];
+  let flameFields = 0;
+  let lengthOfaColumn = 0;
+  let lengthOfSubarray = 0;
+  console.log(gameMap);
+  for(let i = 1; i < gameMap.length; ++i)
+  {
+    lengthOfaColumn = gameMap.length;
+    lengthOfSubarray = gameMap[0].length;
+    if(gameMap[i][lengthOfSubarray-2] === 13)
+    {
+      ++flameFields;
+    }
+    // for(let j = 1; j < gameMap[i].length; ++j)
+    // {      
+
+    // }    
+  }
+  let firstUp = lengthOfaColumn - (flameFields+1);
+  console.log(lengthOfaColumn);
+  console.log(lengthOfSubarray);
+  console.log(flameFields);
+  console.log(firstUp);
+  for(let a = 2; a < (gameMap.length - 1); ++a)
+  {
+    result.push("down");
+  }
+  for(let b = 2; b < (gameMap[gameMap.length - 1].length - 1); ++b)
+  {
+    result.push("right");
+  }
+  for(let a = 2; a <= firstUp; ++a)
+  {
+    result.push("up");
+  }
+  /*
+    array element 1 -> array[X elemente] aller positionen der ersten zeile
+    array element 2 -> array[X elemente] aller positionen der zweiten zeile
+    etc...
+  */
   /*
     Implement the function level8Move() to allow the prince to reach his beloved princess.
 
-The level8Move()function must return an array with a mixture of the strings "left", "right", "up", or "down". 
-These strings must then be passed as parameters to the moveDirection() function (you do not have access to this 
-  function in this level).
+    The level8Move()function must return an array with a mixture of the strings "left", "right", "up", or "down". 
+    These strings must then be passed as parameters to the moveDirection() function (you do not have access to this 
+    function in this level).
 
-The map changes from level to level but you get the map by the received parameter gameMap.
-
-    When the node start.js level8 command is run and the http://127.0.0.1:9000/?level=8 link is opened in a browser, 
-    the prince moves towards the princess.
-
+    The map changes from level to level but you get the map by the received parameter gameMap.
+  
   */
+  return result;
 }
 
 // DON'T MODIFY THE CODE BELOW THIS LINE
