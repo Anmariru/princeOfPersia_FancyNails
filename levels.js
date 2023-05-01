@@ -251,6 +251,7 @@ function level8Move(gameMap)
   let lengthOfaColumn = 0;
   let lengthOfSubarray = 0;
   console.log(gameMap);
+  // going back up after the first L Shape
   for(let i = 1; i < gameMap.length; ++i)
   {
     lengthOfaColumn = gameMap.length;
@@ -259,16 +260,11 @@ function level8Move(gameMap)
     {
       ++flameFields;
     }
-    // for(let j = 1; j < gameMap[i].length; ++j)
-    // {      
-
-    // }    
   }
   let firstUp = lengthOfaColumn - (flameFields+1);
-  console.log(lengthOfaColumn);
-  console.log(lengthOfSubarray);
-  console.log(flameFields);
-  console.log(firstUp);
+  // zigzag
+
+  // add to output
   for(let a = 2; a < (gameMap.length - 1); ++a)
   {
     result.push("down");
@@ -285,16 +281,6 @@ function level8Move(gameMap)
     array element 1 -> array[X elemente] aller positionen der ersten zeile
     array element 2 -> array[X elemente] aller positionen der zweiten zeile
     etc...
-  */
-  /*
-    Implement the function level8Move() to allow the prince to reach his beloved princess.
-
-    The level8Move()function must return an array with a mixture of the strings "left", "right", "up", or "down". 
-    These strings must then be passed as parameters to the moveDirection() function (you do not have access to this 
-    function in this level).
-
-    The map changes from level to level but you get the map by the received parameter gameMap.
-  
   */
   return result;
 }
