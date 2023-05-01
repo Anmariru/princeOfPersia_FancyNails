@@ -208,35 +208,41 @@ let sum = 0;
   return sum;
 }
 
-function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince)
-{
-  /*
-    Implement the function level7Move() so that the prince can reach his beloved princess. 
-    The level7Move() is called until passing to the next level. Write any movement code in this function. 
-    The function receives the elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, 
-    and elementDownOfPrince parameters in this order.
-
-  You can move the prince using the following parameters:
-
-    moveDirection('left')
-    moveDirection('up')
-    moveDirection('right')
-    moveDirection('down')
-
-  Implement a hasMovedToTile() function which receives the direction and tileToCheck parameters. 
-  You can call this function from the level7Move() function.
-
-    When the node start.js level7 command is run and the http://127.0.0.1:9000/?level=7 link is opened in a browser, 
-    the prince moves towards the princess.
-
-  */
-  hasMovedToTile();
-
-}
-
 function hasMovedToTile(direction, tileToCheck)
 {
+  moveDirection(direction);   
+}
+let lastMove = "down";
+function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince)
+{  
+  /*
+    10 - player
+    11 - 'free-space'
+    99 - princess
+    13 - fire
+  */
 
+ console.log(lastMove);
+  if(elementLeftOfPrince % 11 === 0 && lastMove !== "right")
+  {
+    lastMove = "left";
+    hasMovedToTile('left');
+  }
+  else if(elementRightOfPrince % 11 === 0 && lastMove !== "left")
+  {
+    lastMove = "right";
+    hasMovedToTile('right');
+  }
+  else if(elementUpOfPrince % 11 === 0 && lastMove !== "down")
+  {
+    lastMove = "up";
+    hasMovedToTile('up');
+  }
+  else if(elementDownOfPrince % 11 === 0 && lastMove !== "up")
+  {
+    lastMove = "down";
+    hasMovedToTile('down');
+  }
 }
 
 function level8Move()
