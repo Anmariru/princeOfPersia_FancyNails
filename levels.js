@@ -114,7 +114,6 @@ function givePotion5Answer(hours, minutes, seconds, secondsToAdd) // adding some
 
 function givePotion6Answer(input) // Sum all numbers from input string (*3*5*8*1*4*2)
 {
-
   let arrayConversion = input.split('*');
   let sum = 0;
   for(let i = 1; i < arrayConversion.length; ++i)
@@ -233,15 +232,15 @@ function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince
     lastMove = "right";
     hasMovedToTile('right');
   }
-  else if(elementUpOfPrince % 11 === 0 && lastMove !== "down")
-  {
-    lastMove = "up";
-    hasMovedToTile('up');
-  }
   else if(elementDownOfPrince % 11 === 0 && lastMove !== "up")
   {
     lastMove = "down";
     hasMovedToTile('down');
+  }
+  else if(elementUpOfPrince % 11 === 0 && lastMove !== "down")
+  {
+    lastMove = "up";
+    hasMovedToTile('up');
   }
 }
 
