@@ -212,6 +212,7 @@ function hasMovedToTile(direction, tileToCheck)
 {
   moveDirection(direction);   
 }
+
 let lastMove = "down";
 function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince)
 {  
@@ -222,7 +223,6 @@ function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince
     13 - fire
   */
 
- console.log(lastMove);
   if(elementLeftOfPrince % 11 === 0 && lastMove !== "right")
   {
     lastMove = "left";
