@@ -148,28 +148,28 @@ const givePotion12Answer = function(numbers){
 };
 
 //----------------------level 7----------------------
-const hasMovedTile = function (direction, tileToCheck){
-  moveDirection(direction);
+const hasMovedTile = function (direction, tileToCheck){ //tileToCheck --> if I was there, don't go there
+  //if (tileToCheck === false){
+    moveDirection(direction);
+    //tileToCheck = true;
+  
 };
 
 //elementLeftOfPrince is an array with arrays as items
 const level7Move = function(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince){
-  let currentMove = "down";
-
-  if (elementLeftOfPrince % 11 === 0 && currentMove !== "right"){
-    currentMove = "left";
+  const FIRE = 13;
+  const FREE = 11;
+  
+  if (elementLeftOfPrince === FREE && !FIRE){
     hasMovedTile("left");
   }
-  else if (elementRightOfPrince % 11 === 0 && currentMove !== "left"){
-    currentMove = "right";
+  else if (elementRightOfPrince === FREE && !FIRE){
     hasMovedTile("right");
   }
-  else if (elementUpOfPrince % 11 === 0 && currentMove !== "down"){
-    currentMove = "up";
+  else if (elementUpOfPrince === FREE && !FIRE){
     hasMovedTile("up");
   }
-  else if (elementDownOfPrince % 11 === 0 && currentMove !== "up"){
-    currentMove = "down"
+  else if (elementDownOfPrince === FREE && !FIRE){
     hasMovedTile("down");
   }
 };
