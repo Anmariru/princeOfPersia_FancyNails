@@ -241,12 +241,26 @@ function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince
 
 function level8Move(gameMap)
 {
-  let result = [];
+  let route = [];
+  console.log(gameMap);
+
+  // 1st Part of the Way
+  for(let i = 2; i < (gameMap.length - 1); ++i)
+  {
+    route.push("down");
+  }
+
+  // 2nd Part of the Way
+  for(let j = 2; j < (gameMap[gameMap.length - 1].length - 1); ++j)
+  {
+    route.push("right");
+  }
+
+  // 3rd Part of the Way
   let flameFields = 0;
   let lengthOfaColumn = 0;
   let lengthOfSubarray = 0;
-  console.log(gameMap);
-  // going back up after the first L Shape
+
   for(let i = 1; i < gameMap.length; ++i)
   {
     lengthOfaColumn = gameMap.length;
@@ -256,28 +270,49 @@ function level8Move(gameMap)
       ++flameFields;
     }
   }
-  let firstUp = lengthOfaColumn - (flameFields+1);
-  // zigzag
 
-  // add to output
-  for(let a = 2; a < (gameMap.length - 1); ++a)
+  let firstUp = lengthOfaColumn - (flameFields+1);
+
+  for(let i = 2; i <= firstUp; ++i)
   {
-    result.push("down");
+    route.push("up");
   }
-  for(let b = 2; b < (gameMap[gameMap.length - 1].length - 1); ++b)
+
+  // 4th Part of the Way
+  // Skip to zigzag
+  route.push("left");
+  let zigzagStart = flameFields; 
+  for(let i = lengthOfSubarray - 1; i > 0; --i)
   {
-    result.push("right");
+      // move -> either up or down or left
+      if(gameMap[zigzagStart - 1][i - 1] % 13 === 0 && gameMap[zigzagStart][i] % 11 === 0)
+      {
+        route.push("down");
+      }
+      else if(gameMap[zigzagStart][i - 1] % 13 === 0 && gameMap[zigzagStart - 1][i] % 11 === 0)
+      {
+        route.push("up");
+      }
+      else if((gameMap[zigzagStart][i] % 11 === 0 && gameMap[zigzagStart][i - 1] % 11 === 0) || (gameMap[zigzagStart - 1][i] % 11 === 0 && gameMap[zigzagStart - 1][i - 1] % 11 === 0))
+      {
+        route.push("left");
+      }  
   }
-  for(let a = 2; a <= firstUp; ++a)
-  {
-    result.push("up");
-  }
+
+  console.log(gameMap[zigzagStart]);
+  console.log(gameMap[zigzagStart - 1]);
+  console.log(route);
+
+  // 5th Final Part of the Way
+
+
   /*
     array element 1 -> array[X elemente] aller positionen der ersten zeile
     array element 2 -> array[X elemente] aller positionen der zweiten zeile
     etc...
   */
-  return result;
+
+  return route;
 }
 
 // DON'T MODIFY THE CODE BELOW THIS LINE
