@@ -279,24 +279,36 @@ function level8Move(gameMap)
   }
 
   // 4th Part of the Way
-  // Skip to zigzag
-  route.push("left");
   let zigzagStart = flameFields; 
   for(let i = lengthOfSubarray - 1; i > 0; --i)
   {
-      // move -> either up or down or left
-      if(gameMap[zigzagStart - 1][i - 1] % 13 === 0 && gameMap[zigzagStart][i] % 11 === 0)
-      {
-        route.push("down");
-      }
-      else if(gameMap[zigzagStart][i - 1] % 13 === 0 && gameMap[zigzagStart - 1][i] % 11 === 0)
-      {
-        route.push("up");
-      }
-      else if((gameMap[zigzagStart][i] % 11 === 0 && gameMap[zigzagStart][i - 1] % 11 === 0) || (gameMap[zigzagStart - 1][i] % 11 === 0 && gameMap[zigzagStart - 1][i - 1] % 11 === 0))
+    let free = 11;
+    let fire = 13;
+    let fieldAboveDiagonalLeft = gameMap[zigzagStart - 1][i - 1]
+    let fieldAboveMe =  gameMap[zigzagStart - 1][i]
+    let fieldWhereWeAre = gameMap[zigzagStart][i];
+    let fieldLeftOfMe = gameMap[zigzagStart][i - 1];
+
+      if(fieldWhereWeAre === free && fieldLeftOfMe === free)
       {
         route.push("left");
-      }  
+        //console.log(i + ":" + "left");
+      }
+      else if (fieldLeftOfMe === fire && fieldWhereWeAre === free && fieldAboveMe === free)
+      {
+        route.push("up");
+        //console.log(i + ":" + "up" + "->" + fieldLeftOfMe + "-" + fieldAboveMe + "-" + fieldWhereWeAre);
+      }
+      else if(fieldAboveMe === free && fieldAboveDiagonalLeft === free)
+      {
+        route.push("left");
+        //console.log(i + ":" + "left");
+      }
+      if (fieldAboveDiagonalLeft === fire && fieldAboveMe === free && fieldWhereWeAre === free)
+      {
+        route.push("down");
+        //console.log(i + ":" + "down" + "->" + fieldAboveDiagonalLeft + "-" + fieldAboveMe + "-" + fieldWhereWeAre);
+      }
   }
 
   console.log(gameMap[zigzagStart]);
