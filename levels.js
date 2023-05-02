@@ -79,29 +79,68 @@ function manuallyControl (key) {
 
 //POTIONS functions
 
+//sum of all even numbers
 function givePotion2Answer (list) {
   let sum = 0;
+
   for (let i = 0; i < list.length; i++) {
-    if (highestNum )
+    if (list[i] % 2 === 0) {
+      sum += list[i]
+    } else {
+      console.log("no even number in list")
+    }
   }
+  return sum 
+}
+
+//what is the highest number
+function givePotion3Answer (list) {
+  let highest = list[0];
+
+  for (let i = 0; i < list.length; i++) {
+    console.log(list)
+    if (list[i] > highest) { //why do i not iterate through list. I missed the [i] in line 103 by list [i]
+      highest = list[i];
+    }
+  }
+  console.log(`This is the highest number ${highest}`);
+  return highest
+}
+
+function givePotion4Answer (input, toCapitalize) {
+
   
 }
 
-function givePotion3Answer () {
+
+//if you add |47| seconds to |5|:|59|:|52| what time will it be ?
+//script.js:70 Function |givePotion5Answer| returned |undefined|, but |6:0:39| was expected
+
+function givePotion5Answer (hours, minutes, seconds, secondsToAdd) {
   
+  
+
+
 }
 
-function givePotion4Answer () {
+//Sum all the numbers from the following input: |*9*5*1*3*0*9|
+function givePotion6Answer (input) { // mybe use sort to sort out the **
   
-}
-
-function givePotion5Answer () {
+  let numbers = input.split(`*`)
+  let sum = numbers[0];
   
-}
+  console.log(`this is numbers: ${numbers}.`);
 
+  for (let i = 1; i < numbers.length; i++) { 
+    if (numbers[i] > 0) {
+      sum += numbers[i]
 
-function givePotion6Answer () {
+    }
   
+    console.log(sum);
+  
+  }
+  return sum
 }
 
 function givePotion7Answer () {
@@ -118,14 +157,57 @@ function givePotion9Answer () {
   
 }
 
-function givePotion10Answer () {
 
 
+// Find the first position where the letter |r| first appears in the string |ieqassqea| and -1 if not found.
+// script.js:70 Function |givePotion10Answer| returned |undefined|, but |-1| was expected 
+
+//magic door does not allow IndexOf
+
+function givePotion10Answer (letter, list) {
+  console.log(`This is list: ${list}, and this is letter: ${letter}.`);
+
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] === letter) {
+      //console.log(letter);
+      return i
+    }
+  }
+  return -1
+  /*
+You can put the return -1 statement inside an if-else statement, but you need to make sure that it is only executed if the loop completes without finding a match. In the original code you provided, the return -1 statement was inside the for loop, which causes it to return -1 immediately after checking the first letter of the list, regardless of whether it matches the target letter or not.*/
 }
 
-function givePotion11Answer () {
+
+
+
+
+function givePotion11Answer (input, letterToReplace, letterToPutInstead) {
   
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === letterToReplace) {
+      letterToReplace === letterToPutInstead
+    }
+    return input
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function givePotion12Answer () {
   
