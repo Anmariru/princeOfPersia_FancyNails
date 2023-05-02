@@ -1,4 +1,5 @@
-//level 6: go up and down the stairs
+//----------------------level 6----------------------
+//go up and down the stairs
 const getStairsMovementDirection = function(stairNumber, isClimbingStairs){
   if (isClimbingStairs === false){
     return (stairNumber %2 === 1? "right": "down");
@@ -8,7 +9,7 @@ const getStairsMovementDirection = function(stairNumber, isClimbingStairs){
   }
 };
 
-//level 6: Zig Zag fun
+//Zig Zag fun
 const getZigZagMovementDirection = function(step){
   if (step % 6 === 0){
     return "up";
@@ -21,8 +22,9 @@ const getZigZagMovementDirection = function(step){
   }
 };
 
-//level 6: Controlling my puppet
+//Controlling my puppet
 const manuallyControl = function(key){
+  //need to add if else for q
   switch (key){
     case "ArrowLeft":
     case "KeyA":
@@ -43,6 +45,7 @@ const manuallyControl = function(key){
   }
 };
 
+//sum numbers of an array
 const givePotion2Answer = function(list){
   let sum = 0;
   for (let i = 0; i < list.length; i++){
@@ -53,49 +56,124 @@ const givePotion2Answer = function(list){
   return sum;
 };
 
-const givePotion3Answer = function(){
-  
+//return highest number of array
+const givePotion3Answer = function(list){
+  let highest = list[0];
+  for (let i = 0; i < list.length; i++){
+    if (highest < list[i]){
+      highest = list[i];
+    }
+  }
+  return highest;
 };
 
+//?
 const givePotion4Answer = function(){
 
 };
 
-const givePotion5Answer = function(){
-
+//return new time
+const givePotion5Answer = function(hours, minutes, seconds, secondsToAdd){
+  //whaaaaaaaaaaat
 };
 
-const givePotion6Answer = function(){
+//sum numbers from string
+const givePotion6Answer = function(input){
+  let sum = 0;
+  let numbers = input.match(/\d/g).map(Number);
 
+  for (let i = 0; i<numbers.length; i++){
+    sum += numbers[i];
+  }
+  return sum;
+  
 };
 
-const givePotion7Answer = function(){
+//sum numbers of string
+const givePotion7Answer = function(input){
+  let sum = 0;
+  let numbers = input.match(/\d/g).map(Number);
 
+  for (let i = 0; i<numbers.length; i++){
+    sum += numbers[i];
+  }
+  return sum;
 };
 
-const givePotion8Answer = function(){
-
+//true if number is prime number
+const givePotion8Answer = function(number){
+  if ((number/number === 1)||(number/1 === number)){
+    return true;
+  }
+  else {
+    return false;
+  }
 };
 
+//?
 const givePotion9Answer = function(){
 
 };
 
-const givePotion10Answer = function(){
-
+//index of string bUT not with index OF
+const givePotion10Answer = function(letterToFind, input){
+  //return input.indexOf(letterToFind);
+  /*if (input.includes(letterToFind)){
+    return position of letterToFind - but HOW
+  }
+  else {
+    return -1;
+  }
+  */
+  return input.lastIndexOf(letterToFind);
 };
 
-const givePotion11Answer = function(){
-
+//replace sth with sth BuT not with replace function xD
+const givePotion11Answer = function(input, letterToReplace, letterToPutInstead){
+  return input.replace (letterToReplace, letterToPutInstead);
 };
 
-const givePotion12Answer = function(){
-
+//sum numbers, if negative turn into positive
+const givePotion12Answer = function(numbers){
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++){
+    if (numbers[i] < 0){
+      sum += numbers[i]*-1;
+    }
+    else {
+      sum += numbers[i];
+    }
+  }
+  return sum;
 };
 
-const level7Move = function(){
-
+//----------------------level 7----------------------
+const hasMovedTile = function (direction, tileToCheck){
+  moveDirection(direction);
 };
+
+//elementLeftOfPrince is an array with arrays as items
+const level7Move = function(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince){
+  let currentMove = "down";
+
+  if (elementLeftOfPrince % 11 === 0 && currentMove !== "right"){
+    currentMove = "left";
+    hasMovedTile("left");
+  }
+  else if (elementRightOfPrince % 11 === 0 && currentMove !== "left"){
+    currentMove = "right";
+    hasMovedTile("right");
+  }
+  else if (elementUpOfPrince % 11 === 0 && currentMove !== "down"){
+    currentMove = "up";
+    hasMovedTile("up");
+  }
+  else if (elementDownOfPrince % 11 === 0 && currentMove !== "up"){
+    currentMove = "down"
+    hasMovedTile("down");
+  }
+};
+
 
 const level8Move = function(){
 
