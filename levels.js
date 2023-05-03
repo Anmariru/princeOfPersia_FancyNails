@@ -196,15 +196,18 @@ You can put the return -1 statement inside an if-else statement, but you need to
 
 
 
-
 function givePotion11Answer (input, letterToReplace, letterToPutInstead) {
-  
+  console.log(typeof input);
+
+  let a = "";
+  let b = "";
+
   for (let i = 0; i < input.length; i++) {
     if (input[i] === letterToReplace) {
-      letterToReplace === letterToPutInstead
+      
     }
   }
-  return input
+  return b
 }
 
 
@@ -213,19 +216,23 @@ function givePotion11Answer (input, letterToReplace, letterToPutInstead) {
 
 
 
+function givePotion12Answer (number) {
+  let posSum = 0;
+  let negSum = 0;
+  let convertNum = 0;
 
+  let sum = 0;
 
-
-
-
-
-
-
-
-
-
-function givePotion12Answer () {
-  
+  for (let i = 0; i < number.length; i++) {
+    if (number[i] < 0) {
+      negSum += number[i]
+    } else if (number[i] > 0) {
+      posSum += number[i]
+    }
+  }
+  convertNum = Math.abs(negSum);
+  sum = convertNum + posSum;
+  return sum;
 }
 
 
