@@ -126,22 +126,21 @@ function givePotion5Answer (hours, minutes, seconds, secondsToAdd) {
 //Sum all the numbers from the following input: |*9*5*1*3*0*9|
 function givePotion6Answer (input) { // mybe use sort to sort out the **
   
-  let numbers = input.split(`*`)
-  let sum = numbers[0];
+  let sum = 0;
   
-  console.log(`this is numbers: ${numbers}.`);
+  console.log(`this is input: ${input}.`);
 
-  for (let i = 1; i < numbers.length; i++) { 
-    if (numbers[i] > 0) {
-      sum += numbers[i]
+  for (let number of input) { 
+    if (!isNaN(number)) {
+      //console.log("nothing")
+     sum += parseInt(number)
 
     }
-  
-    console.log(sum);
-  
   }
   return sum
 }
+
+
 
 function givePotion7Answer () {
   
@@ -152,9 +151,25 @@ function givePotion8Answer () {
   
 }
 
+//Make the sum of the 2 smallest numbers in the list |8,19,12,6,17|
+//script.js:70 Function |givePotion9Answer| returned |undefined|, but |14| was expected :
+function givePotion9Answer (list) {
+  let lowest = Infinity; // es ging nicht anders-ohne infinity ging es nicht
+  let secLowest = Infinity;
+  let sum = 0;
 
-function givePotion9Answer () {
-  
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] < lowest) {
+      secLowest = lowest;
+      lowest = list[i];
+      
+      console.log(lowest)
+    } else if (list[i] < secLowest && list[i] !== lowest) {
+      secLowest = list[i]
+    }
+  }
+  sum = lowest + secLowest;
+  return sum
 }
 
 
@@ -188,8 +203,8 @@ function givePotion11Answer (input, letterToReplace, letterToPutInstead) {
     if (input[i] === letterToReplace) {
       letterToReplace === letterToPutInstead
     }
-    return input
   }
+  return input
 }
 
 
