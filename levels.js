@@ -149,29 +149,44 @@ const givePotion12Answer = function(numbers){
 
 //----------------------level 7----------------------
 const hasMovedTile = function (direction, tileToCheck){ //tileToCheck --> if I was there, don't go there
-  //if (tileToCheck === false){
+  if (tileToCheck === false){
     moveDirection(direction);
-    //tileToCheck = true;
-  
+  }
+  else if (tileToCheck === true){
+    moveDirection(direction); //--> do what?
+    
+  }
 };
 
-//elementLeftOfPrince is an array with arrays as items
+//element--OfPrince is an array with arrays as items
 const level7Move = function(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince){
   const FIRE = 13;
   const FREE = 11;
+  let TILE = false; // false --> can still go there
   
-  if (elementLeftOfPrince === FREE && !FIRE){
-    hasMovedTile("left");
-  }
-  else if (elementRightOfPrince === FREE && !FIRE){
-    hasMovedTile("right");
-  }
-  else if (elementUpOfPrince === FREE && !FIRE){
-    hasMovedTile("up");
-  }
-  else if (elementDownOfPrince === FREE && !FIRE){
-    hasMovedTile("down");
-  }
+  
+    if (elementLeftOfPrince === FREE && elementLeftOfPrince !== FIRE){
+      hasMovedTile("left", false);
+      
+    }
+    else if (elementRightOfPrince === FREE && elementRightOfPrince !== FIRE){
+      hasMovedTile("right", false);
+      
+      
+    }
+    else if (elementUpOfPrince === FREE && elementUpOfPrince !== FIRE){
+      hasMovedTile("up", false);
+      
+      
+    }
+    else if (elementDownOfPrince === FREE && elementDownOfPrince !== FIRE){
+      hasMovedTile("down",false);
+      TILE = false;
+      if (elementDownOfPrince === FIRE){
+        hasMovedTile("left", true);
+        TILE = true;
+      }
+    }
 };
 
 
