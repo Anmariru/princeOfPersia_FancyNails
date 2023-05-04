@@ -113,10 +113,10 @@ function givePotion4Answer (input, toCapitalize) {
   let arr = input.split("");
   console.log(typeof input);
   for (let i = 0; i < input.length; i++) {
-    if (arr[i] === toCapitalize[1]) {
+    if (arr[i] === toCapitalize[0]) {
       arr[i] = toCapitalize.toUpperCase
       arr = arr.join("");
-    } else if (arr[i] === toCapitalize[2]) {
+    } else if (arr[i] === toCapitalize[1]) {
       arr[i] = toCapitalize.toUpperCase
       arr = arr.join("")
     }
@@ -185,8 +185,8 @@ function givePotion8Answer (number) {
 //Make the sum of the 2 smallest numbers in the list |8,19,12,6,17|
 //script.js:70 Function |givePotion9Answer| returned |undefined|, but |14| was expected :
 function givePotion9Answer (list) {
-  let lowest = Infinity; // es ging nicht anders-ohne infinity ging es nicht
-  let secLowest = Infinity;
+  let lowest = list[0]; // es ging nicht anders-ohne infinity ging es nicht
+  let secLowest = list[0];
   let sum = 0;
 
   for (let i = 0; i < list.length; i++) {
