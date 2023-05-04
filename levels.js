@@ -147,6 +147,7 @@ const givePotion12Answer = function(numbers){
   return sum;
 };
 
+/*
 //----------------------level 7----------------------
 const hasMovedTile = function (direction, tileToCheck){ //tileToCheck --> if I was there, don't go there
   if (tileToCheck === false){
@@ -155,7 +156,7 @@ const hasMovedTile = function (direction, tileToCheck){ //tileToCheck --> if I w
   else if (tileToCheck === true){
     moveDirection(direction); //--> do what?
     
-  }
+  
 };
 
 //element--OfPrince is an array with arrays as items
@@ -166,27 +167,55 @@ const level7Move = function(elementLeftOfPrince, elementRightOfPrince, elementUp
   
   
     if (elementLeftOfPrince === FREE && elementLeftOfPrince !== FIRE){
-      hasMovedTile("left", false);
-      
+      hasMovedTile("left");
     }
     else if (elementRightOfPrince === FREE && elementRightOfPrince !== FIRE){
-      hasMovedTile("right", false);
-      
-      
+      hasMovedTile("right");
     }
     else if (elementUpOfPrince === FREE && elementUpOfPrince !== FIRE){
-      hasMovedTile("up", false);
-      
-      
+      hasMovedTile("up");
     }
-    else if (elementDownOfPrince === FREE && elementDownOfPrince !== FIRE){
+    if (elementDownOfPrince === FREE && elementDownOfPrince !== FIRE){
       hasMovedTile("down",false);
-      TILE = false;
       if (elementDownOfPrince === FIRE){
         hasMovedTile("left", true);
-        TILE = true;
       }
     }
+    else if (elementLeftOfPrince === FREE && elementLeftOfPrince !== FIRE){
+        hasMovedTile("left");
+      }
+};
+*/
+
+//----------------------level 7----------------------
+const FIRE = 13;
+const FREE = 11;
+
+const hasMovedToTile = function (direction, tileToCheck){
+    moveDirection(direction);
+};
+
+let lastMove = "down";
+const level7Move = function (elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince){
+  if (elementLeftOfPrince !== FIRE && lastMove !== "right") {
+    hasMovedToTile("left");
+    lastMove = "left";
+  }
+  
+  else if (elementRightOfPrince !== FIRE && lastMove !== "left"){
+    hasMovedToTile("right");
+    lastMove = "right";
+  }
+  
+  else if (elementDownOfPrince !== FIRE && lastMove !== "up"){
+    hasMovedToTile("down");
+    lastMove = "down";
+  }
+
+  else if (elementUpOfPrince !== FIRE && lastMove !== "down"){
+    hasMovedToTile("up");
+    lastMove = "up";
+  }
 };
 
 
