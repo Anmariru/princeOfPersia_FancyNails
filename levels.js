@@ -25,12 +25,8 @@ function getZigZagMovementDirection(step) {
 
 // Move the prince using the keyboard
 function manuallyControl(userInput) {
-  //console.log(wasdAllowed);
-  // let wasdAllowed = false;
-  // if (userInput === "q") {
-  //   wasdAllowed = !wasdAllowed;
-  // }
-  // if (true) {
+
+  if (true) {
     if (userInput === "ArrowUp") {
       moveDirection("up");
     } else if (userInput === "ArrowDown") {
@@ -39,25 +35,28 @@ function manuallyControl(userInput) {
       moveDirection("right");
     } else if (userInput === "ArrowLeft") {
       moveDirection("left");
-    }
-  // } else {
-    if (userInput === "KeyW") {
-      moveDirection("up");
-    } else if (userInput === "KeyS") {
-      moveDirection("down");
-    } else if (userInput === "KeyD") {
-      moveDirection("right");
-    } else if (userInput === "KeyA") {
-      moveDirection("left");
-    }
-  // }
+    } else {  
+      if (userInput === "KeyW") {
+        moveDirection("up");
+      } else if (userInput === "KeyS") {
+        moveDirection("down");
+      } else if (userInput === "KeyD") {
+        moveDirection("right");
+      } else if (userInput === "KeyA") {
+        moveDirection("left");
+      }
+    }  
+  }
 }
+
 
 // Accumulate 100+ health so that you can defeat the evil wizard
 // OPTIONAL TASK: Drink potion 2
 function givePotion2Answer() { }
 // OPTIONAL TASK: Drink potion 3
-function givePotion3Answer() { }
+function givePotion3Answer() { 
+  return;
+}
 // OPTIONAL TASK: Drink potion 4
 function givePotion4Answer() { }
 // OPTIONAL TASK: Drink potion 5
