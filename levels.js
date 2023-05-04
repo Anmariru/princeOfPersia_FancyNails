@@ -79,6 +79,8 @@ function manuallyControl (key) {
 
 //POTIONS functions
 
+//potion 5 (minutes, seconds)
+
 //sum of all even numbers
 function givePotion2Answer (list) {
   let sum = 0;
@@ -108,7 +110,18 @@ function givePotion3Answer (list) {
 }
 
 function givePotion4Answer (input, toCapitalize) {
-
+  let arr = input.split("");
+  console.log(typeof input);
+  for (let i = 0; i < input.length; i++) {
+    if (arr[i] === toCapitalize[1]) {
+      arr[i] = toCapitalize.toUpperCase
+      arr = arr.join("");
+    } else if (arr[i] === toCapitalize[2]) {
+      arr[i] = toCapitalize.toUpperCase
+      arr = arr.join("")
+    }
+  }
+  return input
   
 }
 
@@ -116,7 +129,12 @@ function givePotion4Answer (input, toCapitalize) {
 //if you add |47| seconds to |5|:|59|:|52| what time will it be ?
 //script.js:70 Function |givePotion5Answer| returned |undefined|, but |6:0:39| was expected
 
+//if you add |5| seconds to |8|:|58|:|51| what time will it be ?
+// script.js:70 Function |givePotion5Answer| returned |undefined|, but |8:58:56| was expected
+
 function givePotion5Answer (hours, minutes, seconds, secondsToAdd) {
+  console.log(hours, minutes, seconds, secondsToAdd );
+  
   
   
 
@@ -124,17 +142,15 @@ function givePotion5Answer (hours, minutes, seconds, secondsToAdd) {
 }
 
 //Sum all the numbers from the following input: |*9*5*1*3*0*9|
-function givePotion6Answer (input) { // mybe use sort to sort out the **
-  
+function givePotion6Answer (input) { 
   let sum = 0;
   
-  console.log(`this is input: ${input}.`);
+  //console.log(`this is input: ${input}.`);
 
   for (let number of input) { 
     if (!isNaN(number)) {
       //console.log("nothing")
      sum += parseInt(number)
-
     }
   }
   return sum
@@ -142,13 +158,28 @@ function givePotion6Answer (input) { // mybe use sort to sort out the **
 
 
 
-function givePotion7Answer () {
-  
+function givePotion7Answer (input) {
+  let sum = 0;
+
+  for( let number of input) {
+    if(!isNaN(number)) {
+      sum += parseInt(number)
+    }
+  }
+  return sum
 }
 
-
-function givePotion8Answer () {
-  
+// is Primenumber or not
+function givePotion8Answer (number) {
+  if (number <= 1) {
+    return false; //all numbers below 1 are not prime
+  }
+  for (let i = 2; i <= Math.sqrt(number); i ++) {
+    if (number % i === 0) {
+      return false; //the number is divisible by a number other than 1 and itself
+    }
+  }
+  return true; // the number is a prime
 }
 
 //Make the sum of the 2 smallest numbers in the list |8,19,12,6,17|
@@ -194,26 +225,18 @@ You can put the return -1 statement inside an if-else statement, but you need to
 }
 
 
-
-
 function givePotion11Answer (input, letterToReplace, letterToPutInstead) {
-  console.log(typeof input);
-
-  let a = "";
-  let b = "";
+  //console.log(typeof input);
+  let arr = input.split("");
 
   for (let i = 0; i < input.length; i++) {
-    if (input[i] === letterToReplace) {
-      
+    if (arr[i] === letterToReplace) {
+      arr[i] = letterToPutInstead
     }
   }
-  return b
+  let index = arr.join("");
+  return index
 }
-
-
-
-
-
 
 
 function givePotion12Answer (number) {
@@ -236,10 +259,16 @@ function givePotion12Answer (number) {
 }
 
 
-
 //Level 7 Dungeon
-function level7Move () {
+//i am the dog, i need to reach the princess
+function level7Move (number) {
+  if (number === 11){
+    elementLeftOfPrince(1)
+    elementRightOfPrince(1)
+    elementUpOfPrince(1)
+    elementDownOfPrince(1)
 
+  }
 }
 
 //level 8 Dungeon
