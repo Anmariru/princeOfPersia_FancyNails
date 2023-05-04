@@ -19,7 +19,6 @@ function getZigZagMovementDirection(step) {
 
 //Controlling my puppet
 const manuallyControl = function(key){
-  //need to add if else for q
   switch (key){
     case "ArrowLeft":
     case "KeyA":
@@ -188,7 +187,7 @@ const givePotion12Answer = function(numbers){
 
 function level7Move()
 {
-  
+
 }
 
 function level8Move()
