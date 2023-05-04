@@ -147,72 +147,28 @@ const givePotion12Answer = function(numbers){
   return sum;
 };
 
-/*
-//----------------------level 7----------------------
-const hasMovedTile = function (direction, tileToCheck){ //tileToCheck --> if I was there, don't go there
-  if (tileToCheck === false){
-    moveDirection(direction);
-  }
-  else if (tileToCheck === true){
-    moveDirection(direction); //--> do what?
-    
-  
-};
-
-//element--OfPrince is an array with arrays as items
-const level7Move = function(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince){
-  const FIRE = 13;
-  const FREE = 11;
-  let TILE = false; // false --> can still go there
-  
-  
-    if (elementLeftOfPrince === FREE && elementLeftOfPrince !== FIRE){
-      hasMovedTile("left");
-    }
-    else if (elementRightOfPrince === FREE && elementRightOfPrince !== FIRE){
-      hasMovedTile("right");
-    }
-    else if (elementUpOfPrince === FREE && elementUpOfPrince !== FIRE){
-      hasMovedTile("up");
-    }
-    if (elementDownOfPrince === FREE && elementDownOfPrince !== FIRE){
-      hasMovedTile("down",false);
-      if (elementDownOfPrince === FIRE){
-        hasMovedTile("left", true);
-      }
-    }
-    else if (elementLeftOfPrince === FREE && elementLeftOfPrince !== FIRE){
-        hasMovedTile("left");
-      }
-};
-*/
-
 //----------------------level 7----------------------
 const FIRE = 13;
-const FREE = 11;
+let lastMove = "down";
 
 const hasMovedToTile = function (direction, tileToCheck){
     moveDirection(direction);
 };
 
-let lastMove = "down";
 const level7Move = function (elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince){
-  if (elementLeftOfPrince !== FIRE && lastMove !== "right") {
+  if (elementLeftOfPrince !== FIRE && lastMove !== "right" || elementLeftOfPrince === 99) {
     hasMovedToTile("left");
     lastMove = "left";
   }
-  
-  else if (elementRightOfPrince !== FIRE && lastMove !== "left"){
+  else if (elementRightOfPrince !== FIRE && lastMove !== "left" || elementRightOfPrince === 99){
     hasMovedToTile("right");
     lastMove = "right";
   }
-  
-  else if (elementDownOfPrince !== FIRE && lastMove !== "up"){
+  else if (elementDownOfPrince !== FIRE && lastMove !== "up" || elementDownOfPrince === 99){
     hasMovedToTile("down");
     lastMove = "down";
   }
-
-  else if (elementUpOfPrince !== FIRE && lastMove !== "down"){
+  else if (elementUpOfPrince !== FIRE && lastMove !== "down" || elementUpOfPrince === 99){
     hasMovedToTile("up");
     lastMove = "up";
   }
