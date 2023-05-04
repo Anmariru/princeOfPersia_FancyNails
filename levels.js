@@ -204,7 +204,6 @@ function givePotion9Answer (list) {
 }
 
 
-
 // Find the first position where the letter |r| first appears in the string |ieqassqea| and -1 if not found.
 // script.js:70 Function |givePotion10Answer| returned |undefined|, but |-1| was expected 
 
@@ -220,8 +219,6 @@ function givePotion10Answer (letter, list) {
     }
   }
   return -1
-  /*
-You can put the return -1 statement inside an if-else statement, but you need to make sure that it is only executed if the loop completes without finding a match. In the original code you provided, the return -1 statement was inside the for loop, which causes it to return -1 immediately after checking the first letter of the list, regardless of whether it matches the target letter or not.*/
 }
 
 
@@ -261,15 +258,36 @@ function givePotion12Answer (number) {
 
 //Level 7 Dungeon
 //i am the dog, i need to reach the princess
-function level7Move (number) {
-  if (number === 11){
-    elementLeftOfPrince(1)
-    elementRightOfPrince(1)
-    elementUpOfPrince(1)
-    elementDownOfPrince(1)
-
-  }
+//ElementLeftOfPrice = 13
+//elementRightOfPrince = 
+//
+function level7Move (elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince) {
+  //console.log(elementUpOfPrince);
+  hasMovedToTile()
+  
 }
+
+// for (let i = 0; i < elementDownOfPrince.length; i++) {
+  //   for (let j = 0; j < elementDownOfPrince[i].length; j++) {
+    //     if (elementDownOfPrince[j] === 11) {
+      //       moveDown
+      //     }
+      //   }
+      // }
+    //}
+    
+
+
+function moveDown() {
+  moveDirection(`down`)
+}
+
+
+function hasMovedToTile(direction, tileToCheck) {
+
+}
+
+
 
 //level 8 Dungeon
 function level8Move () {
