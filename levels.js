@@ -241,118 +241,87 @@ function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince
 
 function level8Move(gameMap)
 {
+  let map = gameMap;
   let route = [];
-  console.log(gameMap);
+  let princePosUD = 1; // Up-Down Pos
+  let princePosLR = 1; // Left-Right Pos
+  let leftOfPrince = 0;
+  let rightOfPrince = 0;
+  let upOfPrince = 0;
+  let downOfPrince = 0;
+  let reachedPrincess = false;
+  let gotPos = false;
 
-  // 1st Part of the Way
-  for(let i = 2; i < (gameMap.length - 1); ++i)
+  console.log(map);
+
+  do
   {
-    route.push("down");
-  }
-
-  // 2nd Part of the Way
-  for(let j = 2; j < (gameMap[gameMap.length - 1].length - 1); ++j)
-  {
-    route.push("right");
-  }
-
-  // 3rd Part of the Way
-  let flameFields = 0;
-  let lengthOfaColumn = 0;
-  let lengthOfSubarray = 0;
-
-  for(let i = 1; i < gameMap.length; ++i)
-  {
-    lengthOfaColumn = gameMap.length;
-    lengthOfSubarray = gameMap[0].length;
-    if(gameMap[i][lengthOfSubarray-2] === 13)
+    // Reset gotPos
+    gotPos = false;
+    // get prince position
+    for(let i = 1; i < map.length; ++i)
     {
-      ++flameFields;
+      if(gotPos)
+      {
+        break;
+      }
+      for(let j = map[i].length; j > 0; --j)
+      {
+        if(map[i][j] === 10)
+          princePosUD = i;
+          princePosLR = j;
+          gotPos = true;
+          break;
+      }
     }
-  }
-
-  let firstUp = lengthOfaColumn - (flameFields+1);
-
-  for(let i = 2; i <= firstUp; ++i)
-  {
-    route.push("up");
-  }
-
-  // 4th Part of the Way
-  let startPos = flameFields; 
-  for(let i = lengthOfSubarray - 2; i > 0; --i)
-  {
-    let free = 11;
-    let fire = 13;
-    let fieldAboveDiagonalLeft = gameMap[startPos - 1][i - 1]
-    let startField = gameMap[startPos][i + 1];
-    let aboveLastField =  gameMap[startPos - 1][i]
-    let fieldWhereWeAre = gameMap[startPos][i];
-    let leftOfLastField = gameMap[startPos][i - 1];
-    let nextStep;
-      // if(fieldWhereWeAre === free && fieldLeftOfMe === free)
-      // {
-      //   nextStep = "left";
-      //   //console.log(i + ":" + "left");
-      // }
-      // else if(fieldWhereWeAre === free && fieldAboveMe === free)
-      // {
-      //   nextStep = "up";
-      //   //console.log(i + ":" + "up" + "->" + fieldLeftOfMe + "-" + fieldAboveMe + "-" + fieldWhereWeAre);
-      // }
-      // else if(fieldAboveMe === free && fieldAboveDiagonalLeft === free)
-      // {
-      //   nextStep = "left";
-      //   //console.log(i + ":" + "left");
-      // }
     
-      // if (fieldAboveMe === free && fieldWhereWeAre === free)
-      // {
-      //   nextStep = "down";
-      //   //console.log(i + ":" + "down" + "->" + fieldAboveDiagonalLeft + "-" + fieldAboveMe + "-" + fieldWhereWeAre);
-      // }
-      // route.push(nextStep);
-      // console.log("X2", fieldAboveDiagonalLeft, fieldAboveMe, nextStep);
-      // console.log("X1", fieldLeftOfMe, fieldWhereWeAre);
+    console.log("map[",princePosUD,"][",princePosLR,"]");
 
-      if(leftOfLastField === free && lastMove !== "right")
-      {
-        lastMove = "left";
-        route.push("left");
-      }
-      // else if(elementRightOfPrince === 11 && lastMove !== "left")
-      // {
-      //   lastMove = "right";
-      //   hasMovedToTile('right');
-      // }
-      else if(aboveLastField === free && lastMove !== "down")
-      {
-        lastMove = "up";
-        route.push("up");
-      }
-      else if(fieldWhereWeAre === free && lastMove !== "up")
-      {
-        lastMove = "down";
-        route.push("down");
-      }
-  }
-/*
- 10| 13  11  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  11  11  11  11  13  11  11  11  13  13  13 
- 11| 13  11  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  11  11  13  11  11  11  13  11  11  11  13 
-*/
-  // console.log(gameMap[zigzagStart]);
-  // console.log(gameMap[zigzagStart - 1]);
-  // console.log(route);
+    // Create knowledge about surroundings
+    leftOfPrince = map[princePosUD][princePosLR - 1];
+    rightOfPrince = map[princePosUD][princePosLR + 1];
+    upOfPrince = map[princePosUD - 1][princePosLR];
+    downOfPrince = map[princePosUD + 1][princePosLR];
+ 
+    // Once we are close to the princess, escape the loop
+    if(downOfPrince === 99)
+    {
+      route.push("down");
+      reachedPrincess = true;    
+    }
+    // else check for the direction to move to and set everything up for the next iteration
+    else if(leftOfPrince === 11)
+    {
+      route.push("left");
+      map[princePosUD][princePosLR - 1] = 10;
+      map[princePosUD][princePosLR] = 13;
+      console.log("pushed left");
+    }
+    else if(rightOfPrince === 11)
+    {
+      route.push("right");
+      map[princePosUD][princePosLR + 1] = 10;
+      map[princePosUD][princePosLR] = 13;
+      console.log("pushed right");
+    }
+    else if(upOfPrince === 11)
+    {
+      route.push("up");
+      map[princePosUD - 1][princePosLR] = 10;
+      map[princePosUD][princePosLR] = 13;
+      console.log("pushed up");
+    }
+    else if(downOfPrince === 11)
+    {
+      route.push("down");
+      map[princePosUD + 1][princePosLR] = 10;
+      map[princePosUD][princePosLR] = 13;
+      console.log("pushed down");
+    }
 
-  // 5th Final Part of the Way
+  } while(!reachedPrincess);
 
-
-  /*
-    array element 1 -> array[X elemente] aller positionen der ersten zeile
-    array element 2 -> array[X elemente] aller positionen der zweiten zeile
-    etc...
-  */
-
+  console.log(route);
   return route;
 }
 
