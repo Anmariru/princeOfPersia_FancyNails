@@ -217,22 +217,22 @@ function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince
 {  
   //  10 - player / 11 - free-space / 99 - princess / 13 - fire
   
-  if(elementLeftOfPrince % 11 === 0 && lastMove !== "right")
+  if(elementLeftOfPrince === 11 && lastMove !== "right" || elementLeftOfPrince === 99)
   {
     lastMove = "left";
     hasMovedToTile('left');
   }
-  else if(elementRightOfPrince % 11 === 0 && lastMove !== "left")
+  else if(elementRightOfPrince === 11 && lastMove !== "left" || elementRightOfPrince === 99)
   {
     lastMove = "right";
     hasMovedToTile('right');
   }
-  else if(elementDownOfPrince % 11 === 0 && lastMove !== "up")
+  else if(elementDownOfPrince === 11 && lastMove !== "up" || elementDownOfPrince === 99)
   {
     lastMove = "down";
     hasMovedToTile('down');
   }
-  else if(elementUpOfPrince % 11 === 0 && lastMove !== "down")
+  else if(elementUpOfPrince === 11 && lastMove !== "down" || elementUpOfPrince === 99)
   {
     lastMove = "up";
     hasMovedToTile('up');
@@ -279,41 +279,70 @@ function level8Move(gameMap)
   }
 
   // 4th Part of the Way
-  let zigzagStart = flameFields; 
-  for(let i = lengthOfSubarray - 1; i > 0; --i)
+  let startPos = flameFields; 
+  for(let i = lengthOfSubarray - 2; i > 0; --i)
   {
     let free = 11;
     let fire = 13;
-    let fieldAboveDiagonalLeft = gameMap[zigzagStart - 1][i - 1]
-    let fieldAboveMe =  gameMap[zigzagStart - 1][i]
-    let fieldWhereWeAre = gameMap[zigzagStart][i];
-    let fieldLeftOfMe = gameMap[zigzagStart][i - 1];
+    let fieldAboveDiagonalLeft = gameMap[startPos - 1][i - 1]
+    let startField = gameMap[startPos][i + 1];
+    let aboveLastField =  gameMap[startPos - 1][i]
+    let fieldWhereWeAre = gameMap[startPos][i];
+    let leftOfLastField = gameMap[startPos][i - 1];
+    let nextStep;
+      // if(fieldWhereWeAre === free && fieldLeftOfMe === free)
+      // {
+      //   nextStep = "left";
+      //   //console.log(i + ":" + "left");
+      // }
+      // else if(fieldWhereWeAre === free && fieldAboveMe === free)
+      // {
+      //   nextStep = "up";
+      //   //console.log(i + ":" + "up" + "->" + fieldLeftOfMe + "-" + fieldAboveMe + "-" + fieldWhereWeAre);
+      // }
+      // else if(fieldAboveMe === free && fieldAboveDiagonalLeft === free)
+      // {
+      //   nextStep = "left";
+      //   //console.log(i + ":" + "left");
+      // }
+    
+      // if (fieldAboveMe === free && fieldWhereWeAre === free)
+      // {
+      //   nextStep = "down";
+      //   //console.log(i + ":" + "down" + "->" + fieldAboveDiagonalLeft + "-" + fieldAboveMe + "-" + fieldWhereWeAre);
+      // }
+      // route.push(nextStep);
+      // console.log("X2", fieldAboveDiagonalLeft, fieldAboveMe, nextStep);
+      // console.log("X1", fieldLeftOfMe, fieldWhereWeAre);
 
-      if(fieldWhereWeAre === free && fieldLeftOfMe === free)
+      if(leftOfLastField === free && lastMove !== "right")
       {
+        lastMove = "left";
         route.push("left");
-        //console.log(i + ":" + "left");
       }
-      else if (fieldLeftOfMe === fire && fieldWhereWeAre === free && fieldAboveMe === free)
+      // else if(elementRightOfPrince === 11 && lastMove !== "left")
+      // {
+      //   lastMove = "right";
+      //   hasMovedToTile('right');
+      // }
+      else if(aboveLastField === free && lastMove !== "down")
       {
+        lastMove = "up";
         route.push("up");
-        //console.log(i + ":" + "up" + "->" + fieldLeftOfMe + "-" + fieldAboveMe + "-" + fieldWhereWeAre);
       }
-      else if(fieldAboveMe === free && fieldAboveDiagonalLeft === free)
+      else if(fieldWhereWeAre === free && lastMove !== "up")
       {
-        route.push("left");
-        //console.log(i + ":" + "left");
-      }
-      if (fieldAboveDiagonalLeft === fire && fieldAboveMe === free && fieldWhereWeAre === free)
-      {
+        lastMove = "down";
         route.push("down");
-        //console.log(i + ":" + "down" + "->" + fieldAboveDiagonalLeft + "-" + fieldAboveMe + "-" + fieldWhereWeAre);
       }
   }
-
-  console.log(gameMap[zigzagStart]);
-  console.log(gameMap[zigzagStart - 1]);
-  console.log(route);
+/*
+ 10| 13  11  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  11  11  11  11  13  11  11  11  13  13  13 
+ 11| 13  11  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  13  11  11  13  11  11  11  13  11  11  11  13 
+*/
+  // console.log(gameMap[zigzagStart]);
+  // console.log(gameMap[zigzagStart - 1]);
+  // console.log(route);
 
   // 5th Final Part of the Way
 
