@@ -239,7 +239,7 @@ function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince
   }
 }
 
-function level8Move(gameMap)
+function level8Move(gameMap) 
 {
   let map = gameMap;
   let route = [];
@@ -254,72 +254,73 @@ function level8Move(gameMap)
 
   console.log(map);
 
-  do
-  {
-    // Reset gotPos
-    gotPos = false;
-    // get prince position
-    for(let i = 1; i < map.length; ++i)
-    {
-      if(gotPos)
+  do {
+      // Reset gotPos
+      gotPos = false;
+      // get prince position
+      for (let i = 1; i < map.length; ++i) 
       {
-        break;
+          if (gotPos) 
+          {
+              break;
+          }
+          for (let j = 1; j < map[i].length; ++j) 
+          {
+              if (map[i][j] === 10)
+              {
+                princePosUD = i;
+                princePosLR = j;
+                gotPos = true;
+                break;
+              }
+          }
       }
-      for(let j = map[i].length; j > 0; --j)
+
+      console.log("map[", princePosUD, "][", princePosLR, "]");
+
+      // Create knowledge about surroundings
+      leftOfPrince = map[princePosUD][princePosLR - 1];
+      rightOfPrince = map[princePosUD][princePosLR + 1];
+      upOfPrince = map[princePosUD - 1][princePosLR];
+      downOfPrince = map[princePosUD + 1][princePosLR];
+
+      // Once we are close to the princess, escape the loop
+      if (downOfPrince === 99) 
       {
-        if(map[i][j] === 10)
-          princePosUD = i;
-          princePosLR = j;
-          gotPos = true;
-          break;
+          route.push("down");
+          reachedPrincess = true;
       }
-    }
-    
-    console.log("map[",princePosUD,"][",princePosLR,"]");
+      // else check for the direction to move to and set everything up for the next iteration
+      else if (leftOfPrince === 11) 
+      {
+          route.push("left");
+          map[princePosUD][princePosLR - 1] = 10;
+          map[princePosUD][princePosLR] = 13;
+          console.log("pushed left");
+      }
+      else if (rightOfPrince === 11) 
+      {
+          route.push("right");
+          map[princePosUD][princePosLR + 1] = 10;
+          map[princePosUD][princePosLR] = 13;
+          console.log("pushed right");
+      }
+      else if (upOfPrince === 11) 
+      {
+          route.push("up");
+          map[princePosUD - 1][princePosLR] = 10;
+          map[princePosUD][princePosLR] = 13;
+          console.log("pushed up");
+      }
+      else if (downOfPrince === 11) 
+      {
+          route.push("down");
+          map[princePosUD + 1][princePosLR] = 10;
+          map[princePosUD][princePosLR] = 13;
+          console.log("pushed down");
+      }
 
-    // Create knowledge about surroundings
-    leftOfPrince = map[princePosUD][princePosLR - 1];
-    rightOfPrince = map[princePosUD][princePosLR + 1];
-    upOfPrince = map[princePosUD - 1][princePosLR];
-    downOfPrince = map[princePosUD + 1][princePosLR];
- 
-    // Once we are close to the princess, escape the loop
-    if(downOfPrince === 99)
-    {
-      route.push("down");
-      reachedPrincess = true;    
-    }
-    // else check for the direction to move to and set everything up for the next iteration
-    else if(leftOfPrince === 11)
-    {
-      route.push("left");
-      map[princePosUD][princePosLR - 1] = 10;
-      map[princePosUD][princePosLR] = 13;
-      console.log("pushed left");
-    }
-    else if(rightOfPrince === 11)
-    {
-      route.push("right");
-      map[princePosUD][princePosLR + 1] = 10;
-      map[princePosUD][princePosLR] = 13;
-      console.log("pushed right");
-    }
-    else if(upOfPrince === 11)
-    {
-      route.push("up");
-      map[princePosUD - 1][princePosLR] = 10;
-      map[princePosUD][princePosLR] = 13;
-      console.log("pushed up");
-    }
-    else if(downOfPrince === 11)
-    {
-      route.push("down");
-      map[princePosUD + 1][princePosLR] = 10;
-      map[princePosUD][princePosLR] = 13;
-      console.log("pushed down");
-    }
-
-  } while(!reachedPrincess);
+  } while (!reachedPrincess);
 
   console.log(route);
   return route;
