@@ -227,7 +227,7 @@ function level8Move(gameMap)
           }
       }
 
-      console.log("map[", princePosUD, "][", princePosLR, "]");
+      console.log("Prince Position [", princePosUD, "][", princePosLR, "]");
 
       // Create knowledge about surroundings
       leftOfPrince = map[princePosUD][princePosLR - 1];
