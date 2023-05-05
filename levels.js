@@ -190,9 +190,91 @@ function level7Move()
 
 }
 
-function level8Move()
+function level8Move(gameMap) 
 {
+  let map = gameMap;
+  let route = [];
+  let princePosUD = 1; // Up-Down Pos
+  let princePosLR = 1; // Left-Right Pos
+  let leftOfPrince = 0;
+  let rightOfPrince = 0;
+  let upOfPrince = 0;
+  let downOfPrince = 0;
+  let reachedPrincess = false;
+  let gotPos = false;
 
+  console.log(map);
+
+  do {
+      // Reset gotPos
+      gotPos = false;
+      // get prince position
+      for (let i = 1; i < map.length; ++i) 
+      {
+          if (gotPos) 
+          {
+              break;
+          }
+          for (let j = 1; j < map[i].length; ++j) 
+          {
+              if (map[i][j] === 10)
+              {
+                princePosUD = i;
+                princePosLR = j;
+                gotPos = true;
+                break;
+              }
+          }
+      }
+
+      console.log("map[", princePosUD, "][", princePosLR, "]");
+
+      // Create knowledge about surroundings
+      leftOfPrince = map[princePosUD][princePosLR - 1];
+      rightOfPrince = map[princePosUD][princePosLR + 1];
+      upOfPrince = map[princePosUD - 1][princePosLR];
+      downOfPrince = map[princePosUD + 1][princePosLR];
+
+      // Once we are close to the princess, escape the loop
+      if (downOfPrince === 99) 
+      {
+          route.push("down");
+          reachedPrincess = true;
+      }
+      // else check for the direction to move to and set everything up for the next iteration
+      else if (leftOfPrince === 11) 
+      {
+          route.push("left");
+          map[princePosUD][princePosLR - 1] = 10;
+          map[princePosUD][princePosLR] = 13;
+          console.log("pushed left");
+      }
+      else if (rightOfPrince === 11) 
+      {
+          route.push("right");
+          map[princePosUD][princePosLR + 1] = 10;
+          map[princePosUD][princePosLR] = 13;
+          console.log("pushed right");
+      }
+      else if (upOfPrince === 11) 
+      {
+          route.push("up");
+          map[princePosUD - 1][princePosLR] = 10;
+          map[princePosUD][princePosLR] = 13;
+          console.log("pushed up");
+      }
+      else if (downOfPrince === 11) 
+      {
+          route.push("down");
+          map[princePosUD + 1][princePosLR] = 10;
+          map[princePosUD][princePosLR] = 13;
+          console.log("pushed down");
+      }
+
+  } while (!reachedPrincess);
+
+  console.log(route);
+  return route;
 }
 
 // DON'T MODIFY THE CODE BELOW THIS LINE
