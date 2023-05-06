@@ -18,7 +18,7 @@ function getZigZagMovementDirection(step) {
 }
 
 //Controlling my puppet
-const manuallyControl = function(key){
+const manuallyControl = function(key){  
   switch (key){
     case "ArrowLeft":
     case "KeyA":
@@ -185,10 +185,33 @@ const givePotion12Answer = function(numbers){
   return sum;
 };
 
-function level7Move()
-{
+//----------------------level 7----------------------
+const FIRE = 13;
+const PRINCESS = 99;
+let lastMove = "down";
 
-}
+const hasMovedToTile = function (direction, tileToCheck){
+    moveDirection(direction);
+};
+
+const level7Move = function (elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince){
+  if (elementLeftOfPrince !== FIRE && lastMove !== "right" || elementLeftOfPrince === PRINCESS) {
+    hasMovedToTile("left");
+    lastMove = "left";
+  }
+  else if (elementRightOfPrince !== FIRE && lastMove !== "left" || elementRightOfPrince === PRINCESS){
+    hasMovedToTile("right");
+    lastMove = "right";
+  }
+  else if (elementDownOfPrince !== FIRE && lastMove !== "up" || elementDownOfPrince === PRINCESS){
+    hasMovedToTile("down");
+    lastMove = "down";
+  }
+  else if (elementUpOfPrince !== FIRE && lastMove !== "down" || elementUpOfPrince === PRINCESS){
+    hasMovedToTile("up");
+    lastMove = "up";
+  }
+};
 
 function level8Move(gameMap) 
 {
