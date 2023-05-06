@@ -260,12 +260,62 @@ function givePotion12Answer (number) {
 //i am the dog, i need to reach the princess
 //ElementLeftOfPrice = 13
 //elementRightOfPrince = 
-//
+//tile to check is damit man nicht zurückläuft
+
+
+
+
+
+
+
+
+
+
+
+
+let lastMove = "down";
+
 function level7Move (elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince) {
-  //console.log(elementUpOfPrince);
-  hasMovedToTile()
-  
+
+ 
+  if (elementLeftOfPrince === 11 && lastMove !== "right" || elementLeftOfPrince === 99) {
+    hasMovedToTile("left")
+    lastMove = "left";
+
+  } else if (elementRightOfPrince === 11 && lastMove !== "left" || elementRightOfPrince === 99) {
+    hasMovedToTile("right")
+    lastMove = "right";
+
+  } else if (elementDownOfPrince === 11 && lastMove !== "up" || elementDownOfPrince === 99) {
+    hasMovedToTile("down")
+    lastMove = "down";
+
+  } else  if (elementUpOfPrince === 11 && lastMove !== "down" || elementUpOfPrince === 99) {
+    hasMovedToTile("up")
+    lastMove = "up";
+  } 
 }
+  
+  
+function hasMovedToTile(direction, tileToCheck) {
+  moveDirection(direction)
+  //tileToCheck = false;
+
+  console.log(direction);
+}
+
+
+
+
+
+
+
+
+
+// if (elementleftOfPrince < 13)
+
+
+
 
 // for (let i = 0; i < elementDownOfPrince.length; i++) {
   //   for (let j = 0; j < elementDownOfPrince[i].length; j++) {
@@ -278,14 +328,11 @@ function level7Move (elementLeftOfPrince, elementRightOfPrince, elementUpOfPrinc
     
 
 
-function moveDown() {
-  moveDirection(`down`)
-}
+// function moveDown() {
+//   moveDirection(`down`)
+// }
 
 
-function hasMovedToTile(direction, tileToCheck) {
-
-}
 
 
 
