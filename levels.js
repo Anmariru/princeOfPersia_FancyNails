@@ -102,7 +102,7 @@ const givePotion7Answer = function(input){
 
 //true if number is prime number
 const givePotion8Answer = function(number){
-  if ((number/number === 1)||(number/1 === number)){
+  if ((number/number === 1)&&(number/1 === number)){
     return true;
   }
   else {
@@ -175,8 +175,9 @@ const level7Move = function (elementLeftOfPrince, elementRightOfPrince, elementU
 };
 
 
-const level8Move = function(){
-
+const level8Move = function(gameMap){
+ //return "left", "right", "up", "down"
+ //moveDirection()
 };
 // DON'T MODIFY THE CODE BELOW THIS LINE
 
