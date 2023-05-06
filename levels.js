@@ -1,10 +1,9 @@
 const getStairsMovementDirection = function(stairNumber, isClimbingStairs){
-  if (isClimbingStairs === false){
-    return (stairNumber %2 === 1? "right": "down");
+  const goRight = stairNumber % 2 === 1
+  if (goRight) {
+    return "right";
   }
-  else if (isClimbingStairs === true){
-    return (stairNumber %2 === 1? "right": "up");
-  }
+  return !isClimbingStairs ? "down" : "up";
 };
 
 function getZigZagMovementDirection(step) {
@@ -12,9 +11,8 @@ function getZigZagMovementDirection(step) {
     return "up";
   } else if (step % 3 === 0) {
     return "down";
-  } else {
-    return "right";
-  }
+  } 
+  return "right";
 }
 
 //Controlling my puppet
@@ -37,22 +35,24 @@ const manuallyControl = function(key){
       moveDirection ("down");
       break;
   }
-};
+}
 
 // Potion Crafting
-
-function givePotion2Answer(list) // Sum all even numbers from array
+/**
+ * @param {number} list - the array of numbers
+ * @returns sum all even numbers from `list`
+ */
+function givePotion2Answer(list) 
 {
   let sum = 0;
-
-  for(let i = 0; i < list.length; ++i)
+  for(let i = 0; i < list.length; ++i) 
   {
     if(list[i] % 2 === 0)
     {
       sum += list[i];
     }
   }  
-    return sum;
+  return sum;
 }
 
 //what is the highest number
@@ -60,7 +60,6 @@ function givePotion3Answer (list) {
   let highest = list[0];
 
   for (let i = 0; i < list.length; i++) {
-    console.log(list)
     if (list[i] > highest) 
     {
       highest = list[i];
@@ -117,8 +116,8 @@ const givePotion7Answer = function(input){
   let sum = 0;
   let numbers = input.match(/\d/g).map(Number);
 
-  for (let i = 0; i<numbers.length; i++){
-    sum += numbers[i];
+  for (let number of numbers){
+    sum += number
   }
   return sum;
 };
@@ -138,14 +137,8 @@ function givePotion8Answer (number) {
 
 function givePotion9Answer(list) // make sum of 2 smallest numbers of array, return sum
 {
-  let numArray = list;
-  let sum = 0;
-  numArray.sort((a,b) => a-b)
-  for(let i = 0; i < 2; ++i)
-  {
-    sum += numArray[i];
-  }
-  return sum;
+  list.sort((a,b) => a-b)
+  return list[0] + list[1]
 }
 
 function givePotion10Answer (letter, list) {
@@ -190,7 +183,7 @@ const FIRE = 13;
 const PRINCESS = 99;
 let lastMove = "down";
 
-const hasMovedToTile = function (direction, tileToCheck){
+const hasMovedToTile = function (direction){
     moveDirection(direction);
 };
 
@@ -213,6 +206,8 @@ const level7Move = function (elementLeftOfPrince, elementRightOfPrince, elementU
   }
 };
 
+
+const PLAYER = 10
 function level8Move(gameMap) 
 {
   let map = gameMap;
@@ -240,7 +235,7 @@ function level8Move(gameMap)
           }
           for (let j = 1; j < map[i].length; ++j) 
           {
-              if (map[i][j] === 10)
+              if (map[i][j] === PLAYER)
               {
                 princePosUD = i;
                 princePosLR = j;
