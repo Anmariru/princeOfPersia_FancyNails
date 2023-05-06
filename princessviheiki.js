@@ -1,46 +1,41 @@
 // Go up and down the stairs
 function getStairsMovementDirection(stairNumber, isClimbingStairs) {
-    if (stairNumber % 2 === 0) {
-      if (isClimbingStairs === true) {
-        return "up";
-      } else if (isClimbingStairs === false) {
-        return "down";
-      }
-    } else {
-      return "right";
-    }
-  }
-  
-  //  Zig-zag movement
-  function getZigZagMovementDirection(step) {
-    if (step % 6 === 0) {
+  if (stairNumber % 2 === 0) {
+    if (isClimbingStairs === true) {
       return "up";
-    } else if (step % 3 === 0) {
+    } else if (isClimbingStairs === false) {
       return "down";
-    } else {
-      return "right";
     }
+  } else {
+    return "right";
   }
-  
-  
-  // Move the prince using the keyboard
-  function manuallyControl(userInput) {
-    //console.log(wasdAllowed);
-    // let wasdAllowed = false;
-    // if (userInput === "q") {
-    //   wasdAllowed = !wasdAllowed;
-    // }
-    // if (true) {
-      if (userInput === "ArrowUp") {
-        moveDirection("up");
-      } else if (userInput === "ArrowDown") {
-        moveDirection("down");
-      } else if (userInput === "ArrowRight") {
-        moveDirection("right");
-      } else if (userInput === "ArrowLeft") {
-        moveDirection("left");
-      }
-    // } else {
+}
+
+//  Zig-zag movement
+function getZigZagMovementDirection(step) {
+  if (step % 6 === 0) {
+    return "up";
+  } else if (step % 3 === 0) {
+    return "down";
+  } else {
+    return "right";
+  }
+}
+
+
+// Move the prince using the keyboard
+function manuallyControl(userInput) {
+
+  if (true) {
+    if (userInput === "ArrowUp") {
+      moveDirection("up");
+    } else if (userInput === "ArrowDown") {
+      moveDirection("down");
+    } else if (userInput === "ArrowRight") {
+      moveDirection("right");
+    } else if (userInput === "ArrowLeft") {
+      moveDirection("left");
+    } else {  
       if (userInput === "KeyW") {
         moveDirection("up");
       } else if (userInput === "KeyS") {
@@ -50,36 +45,46 @@ function getStairsMovementDirection(stairNumber, isClimbingStairs) {
       } else if (userInput === "KeyA") {
         moveDirection("left");
       }
-    // }
+    }  
   }
-  
-  // Accumulate 100+ health so that you can defeat the evil wizard
-  // OPTIONAL TASK: Drink potion 2
-  function givePotion2Answer() { }
-  // OPTIONAL TASK: Drink potion 3
-  function givePotion3Answer() { }
-  // OPTIONAL TASK: Drink potion 4
-  function givePotion4Answer() { }
-  // OPTIONAL TASK: Drink potion 5
-  function givePotion5Answer() { }
-  // OPTIONAL TASK: Drink potion 6
-  function givePotion6Answer() { }
-  // OPTIONAL TASK: Drink potion 7
-  function givePotion7Answer() { }
-  // OPTIONAL TASK: Drink potion 8
-  function givePotion8Answer() { }
-  // OPTIONAL TASK: Drink potion 9
-  function givePotion9Answer() { }
-  // OPTIONAL TASK: Drink potion 10
-  function givePotion10Answer() { }
-  // OPTIONAL TASK: Drink potion 11
-  function givePotion11Answer() { }
-  // OPTIONAL TASK: Drink potion 12
-  function givePotion12Answer() { }
-  // Solve Level 7 Dungeon
-  function level7Move() { }
-  // OPTIONAL TASK: Solve Level 8 Dungeon
-  function level8Move() { }
+}
+
+
+// Accumulate 100+ health so that you can defeat the evil wizard
+// OPTIONAL TASK: Drink potion 2
+function givePotion2Answer() { 
+  // console.log(Math.max(12,15)) you don´t use Math.max function
+}
+
+    
+
+// OPTIONAL TASK: Drink potion 3
+function givePotion3Answer() { 
+  return;
+}
+// OPTIONAL TASK: Drink potion 4
+function givePotion4Answer() { }
+// OPTIONAL TASK: Drink potion 5
+function givePotion5Answer() { }
+// OPTIONAL TASK: Drink potion 6
+function givePotion6Answer() { }
+// OPTIONAL TASK: Drink potion 7
+function givePotion7Answer() { }
+// OPTIONAL TASK: Drink potion 8
+function givePotion8Answer() { }
+// OPTIONAL TASK: Drink potion 9
+function givePotion9Answer() { }
+// OPTIONAL TASK: Drink potion 10
+function givePotion10Answer() { }
+// OPTIONAL TASK: Drink potion 11
+function givePotion11Answer() { }
+// OPTIONAL TASK: Drink potion 12
+function givePotion12Answer() { }
+// Solve Level 7 Dungeon
+function level7Move() { }
+// OPTIONAL TASK: Solve Level 8 Dungeon
+function level8Move() { }
+
 // DON'T MODIFY THE CODE BELOW THIS LINE
 
 let toExport;
@@ -108,4 +113,4 @@ try {
   toExport = { error: error.message }
 }
 
-export { toExport };
+export { toExport };S
